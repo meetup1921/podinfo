@@ -1,0 +1,17 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: keda
+  namespace: keda
+  annotations:
+    fluxcd.io/automated: "true"
+    filter.fluxcd.io/chart-image: "glob:*"
+spec:
+  releaseName: keda
+  chart:
+    repository: https://kedacore.github.io/charts
+    name: keda
+    version: 2.7.2
+  rollback:
+    # If set, will perform rollbacks for this release.
+    enable: true
